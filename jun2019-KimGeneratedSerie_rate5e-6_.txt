@@ -1,0 +1,27 @@
+\begin{table}[htb] 
+	 \centering 
+	 \setlength{\tabcolsep}{2pt} 
+	 \renewcommand{\arraystretch}{1} 
+	 \captionsetup{width=11cm} 
+	 \Caption{\label{tab} Constantes da série de Prony do módulo de relaxação}{ 
+		 \begin{tabular}{ccc} 
+			 \toprule 
+			 i & $\rho_i$ (sec) & $E_i$ (MPa) \\ 
+			 \midrule \midrule 
+			 \hline 
+			 1 & 9.75E+00 & 1.85E+02 \\ 
+			 2 & 9.75E+01 & 1.15E+02 \\ 
+			 3 & 9.75E+02 & 3.65E+01 \\ 
+			 4 & 9.75E+03 & -1.48E+01 \\ 
+			 5 & 9.75E+04 & 6.10E+01 \\ 
+			 6 & 9.75E+05 & 7.52E+02 \\ 
+			 7 & 9.75E+06 & -5.24E+02 \\ 
+			 & $E_\infty = -2.40E+02 $ & \\ 
+			 & $k = 5.00E-06 $ & \\ 
+			 \bottomrule 
+		 \end{tabular} 
+	 }{ 
+	 \Fonte{} 
+	 \Nota{} 
+	 } 
+\end{table} 
