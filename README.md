@@ -10,7 +10,7 @@ You can download this source code and simply open as an *RStudio* project.
 
 ## Example
 
-[Data from literature](relaxation module/) and real data from [CCMRT test at UFCA](CCMRT test/CCMRT test.csv) are avaliable.
+Data from literature are avaliable in relaxation module folder and real data from [CCMRT test at UFCA](CCMRT test/CCMRT test.csv) are avaliable.
 
 ## Citation
 If you use the code of this repository in your paper or research please cite:
