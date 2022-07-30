@@ -6,11 +6,11 @@ The *prev-NAS* is a R project for modeling and forecasting groundwater level (GW
 
 ## Installation
 
-You can download this source code and simply open as an *RStudio* project.
+You can download this source code and simply run the [viscomodule](viscomodule.py)file.
 
 ## Example
 
-[Data from literature](relaxation module/) and real data from [CCMRT test at UFCA](CCMRT test/CCMRT test.csv) are avaliable.
+Relaxation module from the [literature](relaxation-module) and real data from [CCMRT test](CCMRT-test/CCMRT-test.csv) at UFCA are avaliable.
 
 ## Citation
 If you use the code of this repository in your paper or research please cite:
