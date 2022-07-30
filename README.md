@@ -1,6 +1,6 @@
 # viscomodule
 
-The *viscomodule* is a `Python` project for viscoelastic relaxation modulus characterization using Prony series. The method considers only the linear viscoelastic regime and uses the results from a creep test for calculating the Prony series constants, by the least squares method. The project has a `PyQt5` Graphical User Interface (GUI).
+The *viscomodule* is a `Python` project for viscoelastic relaxation modulus characterization of mix asphalt materials with Prony series. The method considers only the linear viscoelastic regime and uses the results from a creep test for calculating the Prony series constants, by the least squares method. The project has a `PyQt5` Graphical User Interface (GUI).
 
 ## Installation
 
