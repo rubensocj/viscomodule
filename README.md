@@ -10,7 +10,7 @@ You can download this source code and simply run the [viscomodule](viscomodule.p
 
 ## Example
 
-Relaxation module from the [literature](relaxation-module) and real data from [CCMRT test](CCMRT-test/CCMRT-test.csv) at UFCA are avaliable.
+Relaxation modulus from the [literature](relaxation-modulus) and real data from [CCMRT test](creep-test/creep-test.csv) at UFCA are avaliable.
 
 ## Citation
 If you use the code of this repository in your paper or research please cite:
