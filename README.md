@@ -6,7 +6,7 @@ The *prev-NAS* is a R project for modeling and forecasting groundwater level (GW
 
 ## Installation
 
-You can download this source code and simply run the [viscomodule](viscomodule.py)file.
+You can download this source code and simply run the [viscomodule](viscomodule.py) file.
 
 ## Example
 
