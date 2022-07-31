@@ -6,6 +6,8 @@ A partir dos resultados de um ensaio de _creep_ estático, o código considera a
 
 Usando uma série de Prony do módulo de relaxação previamente conhecida, o programa também permite simular um ensaio de _creep_ estático.
 
+Módulos de relaxação da [literatura](relaxation-modulus) e dados reais de um ensaio de [_creep_ estático](creep-test/creep-test.csv) realizado na UFCA estão disponíveis.
+
 O projeto possui uma Interface Gráfica do Usuário (GUI) em `PyQt5`.
 
 Este projeto foi desenvolvido para o Trabalho de Conclusão de Curso (TCC) em Engenharia Civil na Universidade Federal do Cariri (UFCA).
@@ -13,10 +15,6 @@ Este projeto foi desenvolvido para o Trabalho de Conclusão de Curso (TCC) em En
 ## Instalação
 
 Faça download do código e execute o arquivo [viscomodule](viscomodule.py).
-
-## Exemplo
-
-Módulos de relaxação da [literatura](relaxation-modulus) e dados reais de um ensaio de [_creep_ estático](creep-test/creep-test.csv) realizado na UFCA estão disponíveis.
 
 ## Citação
 
