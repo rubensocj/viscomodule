@@ -23,7 +23,7 @@ Módulos de relaxação da [literatura](relaxation-modulus) e dados reais de um 
 ```
 @MASTERSTHESIS{,
   title = {Determinação das constantes da série de Prony do módulo de relaxação de misturas asfálticas por ensaio de compressão uniaxial com taxa de deformação constante}
-  author = {da Cunha Junior, Rubens Oliveira},
+  author = {da Cunha Júnior, Rubens Oliveira},
   year = {2019},
   school = {Universidade Federal do Cariri},
   address = {Juazeiro do Norte},
