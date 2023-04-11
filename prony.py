@@ -11,7 +11,6 @@
 # getRelaxationTimesEinf
 # isAllPositiveArray
 # readCSV
-# writeCSV
 # writeTexTable
 # toFloatArray
 # main
@@ -52,7 +51,6 @@ def tension(time, kz, eInf, eArray, pArray, num):
                         x1 = x1 + eArray[j]*pArray[j]*(1 - mt.exp(-time[i]/pArray[j]))
                         
                         # appends the result to sumArray
-                        #sumArray.append(x1)
                         j = j+1
                 
                 # auxiliary variable, means the tension
@@ -150,14 +148,9 @@ def getRelaxationTimes(time, tension, kz, num, step):
         # the 0-th exponent when the last exponent = 10
         lastini = 11 - num
 
-        # set kz values
-        # value range: 1.0 to 4.0 by 1.0
-##        kz = np.linspace(1.0, 3.0, 3)
-
         # set pp mantissa values
         # value range: 1.0 to 9.0 by 1
         # e.g. 1E3, 2E3, 3E4...
-##        ppmant = np.linspace(1.0, 9.0, 9.0)
         ppmant = np.arange(1.0, 10.0, step=step)
 
         # initializes ee array to keep Prony series constants values
@@ -190,9 +183,6 @@ def getRelaxationTimes(time, tension, kz, num, step):
                         # set vector B
                         vec = st.vectorB(tension, time, pp, num)
 
-                        # loop through kz
-##                        for j in np.arange(0, len(kz), 1):
-                        
                         # set matrix
                         mtx = st.matrixA(kz, time, pp, num)
 
@@ -213,22 +203,16 @@ def getRelaxationTimes(time, tension, kz, num, step):
                                 expmen = np.mean(expvec)
                                 expcov = expstd/expmen
                                 expinf = np.floor(np.log10(np.abs(ee[0]))).astype(int)
-##                                print('expinf: {} | expmen: {}'.format(expinf, expmen))
 
                                 # fits ee values to 3th degree polynomy
                                 print('pp:', pp)
                                 print('ee:',ee)
                                 reg = polynomialRegression(pp, abs(ee[1:]), 3)
-        ##                        print(isWellAdjusted(ee, reg))
-##                                print('ecopt:', ecopt)
-        ##                        if(isWellAdjusted(ee, reg) and reg.r_squared > rsopt):
-        ##                        if(reg.r_squared > rsopt and reg.r_squared < 0.8):
                                 if(reg.r_squared > rsopt and reg.r_squared < 0.8 and
                                    expcov < ecopt and expcov > 0.10 and
                                    0.7*expmen <= expinf <= 1.3*expmen):  
                                         rsopt = reg.r_squared
                                         eeopt = ee
-        ##                                        kzopt = kz[j]
                                         ppopt = pp
                                         maopt = mtx
                                         vbopt = vec
@@ -261,7 +245,6 @@ def getRelaxationTimesEinf(time, tension, eInf, kz, num, step):
         # set pp mantissa values
         # value range: 1.0 to 9.0 by 1
         # e.g. 1E3, 2E3, 3E4...
-##        ppmant = np.linspace(1.0, 9.0, 9.0)
         ppmant = np.arange(1.0, 10.0, step=step)
 
         # initializes ee array to keep Prony series constants values
@@ -291,18 +274,10 @@ def getRelaxationTimesEinf(time, tension, eInf, kz, num, step):
                         pp = np.geomspace(startValue, stopValue, num)
 
                         # set vector B
-                        vec = st.vectorBred(tension,
-                                            time,
-                                            pp,
-                                            eInf,
-                                            kz,
-                                            num)
+                        vec = st.vectorBred(tension, time, pp, eInf, kz, num)
             
                         # set matrix
-                        mtx = st.matrixAred(kz,
-                                            time,
-                                            pp,
-                                            num)
+                        mtx = st.matrixAred(kz, time, pp, num)
 
                         # solve
                         ee = st.solve(mtx, vec)
@@ -321,14 +296,11 @@ def getRelaxationTimesEinf(time, tension, eInf, kz, num, step):
                                 expmen = np.mean(expvec)
                                 expcov = expstd/expmen
                                 expinf = np.floor(np.log10(np.abs(eInf))).astype(int)
-##                                print('expinf: {} | expmen: {}'.format(expinf, expmen))
 
                                 # fits ee values to 3th degree polynomy
                                 print('pp:', pp)
                                 print('ee:',ee)
                                 reg = polynomialRegression(pp, abs(ee), 3)
-##                                print('r² optimum:', rsopt)
-##                                if(reg.r_squared > rsopt and reg.r_squared < 0.8 and
                                 if(0.7*expmen <= expinf <= 1.5*expmen):   
                                         rsopt = reg.r_squared
                                         eeopt = ee
@@ -438,22 +410,6 @@ def readCSV(fileName):
         
         return [cstP, cstE]
 
-"""
- @deprecated
- 
- Writes a csv file.
- 
- fileName - name of the output file within the .csv extension
- tension - an array of tension values, where each line must be an array
- 
-"""
-def writeCSV(fileName, tension):
-        with open(fileName, 'w') as csvFile:
-                writer = csv.writer(csvFile, delimiter = ',')
-                writer.writerows(tension)
-                
-        csvFile.close()
-
 """ 
  Writes a txt file with a table in LaTeX.
  
@@ -511,81 +467,3 @@ def toFloatArray(a):
                 i = i+1
         
         return f
-
-
-"""
- The main method
-"""
-def main():
-        # Kim, pp. 145
-
-        # imports the csv file with p and E values
-        input = readCSV('jun2019-KimGeneratedSerie_rate5e-6csv.csv')
-        p = toFloatArray(input[0])
-        e = toFloatArray(input[1])
-                
-        # time array
-        # linspace(init, end, number os samples)
-        t = np.linspace(0, 3600, 10000)
-        # deformation rate
-        k = 5e-6
-        # single spring constant (relaxation modulus) in Pa
-        eInf = 34.5 # kim
-##        #eInf = 2.24e6 # park
-        # number of terms in Prony series
-        n = 11
-##                
-##        # tension
-##        outputTension = tension(t, k, eInf, e, p, n)
-##
-##        # organizes the time x tension output matrix
-##        o1 = np.asarray([t, outputTension])
-##        output = o1.transpose()
-##
-##        print('o1: ', o1)
-##        print('...')
-##        print('output: ', output)
-##
-##        # creates the output.csv file
-##        np.savetxt("outputkim.csv", output, delimiter = ",")
-
-        # plot
-        #plot(t, outputTension)
-        print(e)
-        print(p)
-
-        serie = prony(t,eInf,np.abs(e),np.abs(p),len(e))
-        print(serie)
-
-        plt.style.use('seaborn-paper')
-        plt.rcParams['font.sans-serif'] = "DejaVu Sans"
-        plt.rcParams['font.family'] = "sans-serif"
-        ax = plt.subplot(111) # create an axis
-        ax.clear() # discards the old graph
-        color = 'orangered'
-
-        ax.plot(t, serie, color=color)
-
-        ax.set_xlabel('Tempo - t (s)', fontsize=11)
-        ax.set_ylabel('Módulo de relaxação - E(t) (MPa)', fontsize=11)
-        ax.tick_params(axis='both', which='major', labelsize=10)
-        plt.ticklabel_format(style='sci', axis='y', scilimits=(0,4))
-
-        plt.show()
-
-##        k=1
-##        einf=1
-##        e=[10,20,30]
-##        p=[0.1,1,10]
-##        t=[1,2]
-##
-##        sigma = tension(t,k,einf,e,p,len(e))
-##        print(sigma)
-
-
-        
-        
-# the main module
-if __name__ == "__main__":
-  main()
-        

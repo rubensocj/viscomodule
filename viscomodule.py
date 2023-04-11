@@ -1,12 +1,14 @@
 import sys
- 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QSizePolicy, QAction
-from PyQt5.QtWidgets import QGroupBox, QVBoxLayout, QHBoxLayout, QGridLayout
-from PyQt5.QtWidgets import QMessageBox, QPushButton, QLabel, QComboBox, QCheckBox, QSlider
-from PyQt5.QtWidgets import QWidget, QDesktopWidget, QFileDialog, QLineEdit, QDialog, QProgressBar
-from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QTableView, QHeaderView
 
-from PyQt5 import QtGui
+from PyQt5 import QtWidgets
+
+from PyQt5.QtWidgets import *
+
+# from PyQt5.QtWidgets import QApplication, QMainWindow, QMenu, QSizePolicy, QAction, QGroupBox, QVBoxLayout, QHBoxLayout, QGridLayout
+# from PyQt5.QtWidgets import QMessageBox, QPushButton, QLabel, QComboBox, QCheckBox, QSlider
+# from PyQt5.QtWidgets import QWidget, QDesktopWidget, QFileDialog, QLineEdit, QDialog, QProgressBar
+# from PyQt5.QtWidgets import QTableWidget,QTableWidgetItem, QTableView, QHeaderView
+
 from PyQt5.QtGui import QIntValidator, QDoubleValidator, QDesktopServices, QIcon
 from PyQt5.QtCore import pyqtSlot, QSize, Qt, QAbstractTableModel, QUrl
  
@@ -135,18 +137,10 @@ class App(QMainWindow):
         
         # combobox
         self.cbxTerms = QComboBox(self)
-        self.cbxTerms.addItem('7')
-        self.cbxTerms.addItem('8')
-        self.cbxTerms.addItem('9')
-        self.cbxTerms.addItem('10')
-        self.cbxTerms.addItem('11')
+        self.cbxTerms.addItems(['7','8','9','10','11'])
 
         self.cbxSpace = QComboBox(self)
-        self.cbxSpace.addItem('10')
-        self.cbxSpace.addItem('1')
-        self.cbxSpace.addItem('0.5')
-        self.cbxSpace.addItem('0.25')
-        self.cbxSpace.addItem('0.1')
+        self.cbxSpace.addItems(['10','1','0.5','0.25','0.1'])
 
         # textfields
         self.doubleValidator = QDoubleValidator()
@@ -696,8 +690,6 @@ class PlotWindow(QDialog):
         ax.set_xlabel(xlabel, fontsize=11)
         ax.set_ylabel(ylabel, fontsize=11)
         ax.tick_params(axis='both', which='major', labelsize=10)
-##        ax.text(0.85, 0.9, '$E_\infty$ = ' + str(einf), ha='center', va='center', transform=ax.transAxes, fontsize=10,
-##                bbox=dict(facecolor='none', edgecolor='black', pad=10.0))
         
         self.canvas.draw() # refresh canvas
 

@@ -73,6 +73,3 @@ class PronySerie:
                              self.relaxatioTimes,
                              self.num)
         self.setTension(tension)
-                      
-        
-

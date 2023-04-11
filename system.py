@@ -1,21 +1,3 @@
-# This script implements the formation law of the matrix and independent
-# vector of linear equation system to obtain the prony series constants
-
-# Contains:
-#
-# matrixA
-# vectorB
-# matrixAred
-# vectorBred
-# pivot
-# permut
-# progressub
-# retrosubst
-# solve
-# solveSystem
-# isSingular
-
-# import modules
 import numpy as np
 import math as mt
 import matplotlib.pyplot as plt
@@ -171,7 +153,6 @@ def pivot(a, b):
 	ll = np.zeros(shape=(nn,nn))
 	
 	# permutation vector:	1, 2, ... , n + 1
-	# lis(range(ini, end) creates a list object from ini to end - 1
 	per = list(range(0, nn))
 	
 	# pivot vector
@@ -194,7 +175,6 @@ def pivot(a, b):
 		for j in np.arange(i, nn, 1):
 			# obtain the ratio between the j-th element of column i
 			# and maximum value in modulus corresponding to that j-th line
-			# rz = abs(aa[per.index(j)][i]/mdmax[per.index(j)])
 			rz = abs(aa[per.index(j)][i])
 			
 			# get the smaller index corresponding to bigger ratio 
@@ -371,16 +351,12 @@ def solveLU(aa, bb):
  return - boolean
 """
 def isInvertible(ma):
-##        print('posto:', np.linalg.matrix_rank(ma))
-##        print('det:', np.linalg.det(ma))
         return np.linalg.matrix_rank(ma) > 2 and abs(np.linalg.det(ma)) > 10e-20
-##        return abs(np.linalg.det(ma)) > 10e-20
     
 def jacobi(A, b, x, N):
 	D = np.diag(A)
 	R = A - np.diagflat(D)
 
-	for i in range(n):
+	for i in range(N):
 		x = (b - np.dot(R,x))/D
 	return x
-	
