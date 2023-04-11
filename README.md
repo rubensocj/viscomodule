@@ -1,24 +1,27 @@
 # viscomodule
 
-The *viscomodule* is a `Python` project for viscoelastic relaxation modulus characterization using Prony series. The method considers only the linear viscoelastic regime and uses the results from a creep test for calculating the Prony series constants, by the least squares method. The project has a `PyQt5` Graphical User Interface (GUI).
+O *viscomodule* é um projeto em `Python` para caracterização viscoelástica do módulo de relaxação de misturas asfálticas usando séries de Prony.
 
-*Read this in other languages*: [Português brasileiro](README.br.md).
+A partir dos resultados de um ensaio de _creep_ estático, o código considera apenas o regime viscoelástico linear e permite obter as constantes da série de Prony do módulo de relaxação. Uma função linear é usada como função interpoladora para realizar o ajuste de curvas da série de Prony e o método dos mínimo quadrados é aplicado para se obter o sistema de equações lineares.
 
-## Installation
+Usando uma série de Prony do módulo de relaxação previamente conhecida, o programa também permite simular um ensaio de _creep_ estático.
 
-You can download this source code and simply run the [viscomodule](viscomodule.py) file.
+Módulos de relaxação da [literatura](relaxation-modulus) e dados reais de um ensaio de [_creep_ estático](creep-test/creep-test.csv) realizado na UFCA estão disponíveis.
 
-## Example
+O projeto possui uma Interface Gráfica do Usuário (GUI) em `PyQt5`.
 
-Relaxation modulus from the [literature](relaxation-modulus) and real data from [CCMRT test](creep-test/creep-test.csv) at UFCA are avaliable.
+Este projeto foi desenvolvido para o Trabalho de Conclusão de Curso (TCC) em Engenharia Civil na Universidade Federal do Cariri (UFCA).
 
-## Citation
-If you use the code of this repository in your paper or research please cite:
+## Instalação
+
+Faça download do código e execute o arquivo [viscomodule](viscomodule.py).
+
+## Citação
 
 ```
 @MASTERSTHESIS{,
   title = {Determinação das constantes da série de Prony do módulo de relaxação de misturas asfálticas por ensaio de compressão uniaxial com taxa de deformação constante}
-  author = {da Cunha Junior, Rubens Oliveira},
+  author = {da Cunha Júnior, Rubens Oliveira},
   year = {2019},
   school = {Universidade Federal do Cariri},
   address = {Juazeiro do Norte},
